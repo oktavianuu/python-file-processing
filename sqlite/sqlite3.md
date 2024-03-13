@@ -81,3 +81,7 @@ At this stage, we have not adding anything yet to our database. There are two st
 ```conn.commit()``` and ```conn.close()``` methods provided by Connection object.
 The ```commit``` method confirms our changes (the current transaction). If we forget to call it, our changes won't be visible in our database.
 The ```close``` method is used to close the conneection of our database after inserting data.
+
+#### the ```executemany()``` method
+Imagine if we want to add three task to the database, if we use ```execute``` method, we need to do it separately three times. This is where ```executemany``` is useful. This method is provided by the ```Cursor``` object. 
+The ```executemany``` method allows us to insert multiple records at once. As an argument, it accepts an SQL statement and an array containing any number of tuples.
