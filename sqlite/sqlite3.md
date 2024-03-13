@@ -50,4 +50,34 @@ CREATE TABLE tasks(
     priority INTEGER NOT NULL
 );
 ```
-    
+
+#### sqlite3 - inserting data
+To insert data to our table, we'll use 'INSERT INTO' statement. Its syntax is as follow:
+```python
+INSERT INTO table_name (column1, column2, column3, ..., columnN)
+VALUES (value1, value2, value3, ..., value4)
+```
+Using the above formula, we're able to prepare a query that will allow us to save our first task in the database:
+```python
+INSERT INTO tasks (id, name, priority) VALUES (1, 'My first task', 1);
+```
+or we can omitt id column 
+```python
+INSERT INTO tasks (name, priority) VALUES ('My first task', 1);
+```
+or omitt the columns name:
+```python
+INSERT INTO taks VALUES(value1, value2, ..., valueN)
+```
+This is how we do it:
+```python
+c.execute('INSERT INTO tasks (name, priority) VALUES (?, ?)', ('My first task', 1))
+# The "?" characters will later be replaced by correct values during the execution of the statement. In the example above, 
+# the first "?" character will be replaced by 'My first task' and the second "?" character will be replaced by 1
+# this is to avoid SQL injection attack, which is malicious sql is appended to a query that could possibly 
+# destroy our database
+```
+At this stage, we have not adding anything yet to our database. There are two steps remaining:
+```conn.commit()``` and ```conn.close()``` methods provided by Connection object.
+The ```commit``` method confirms our changes (the current transaction). If we forget to call it, our changes won't be visible in our database.
+The ```close``` method is used to close the conneection of our database after inserting data.
