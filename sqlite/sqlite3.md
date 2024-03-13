@@ -37,4 +37,17 @@ CREATE TABLE table_name(
     columnN datatype
 );
 ```
-The ```CREATE TABLE``` create a new table in the database   
+The ```CREATE TABLE``` create a new table in the database. In our case, it will be a table called ```tasks``` consisting of three columns: ```id, name``` and ```priority```. 
+The id column is a primary key that allows you to uniquely identify records stored in the table. The second column called name is responsible for storing the names of the tasks we’ll have to do. It's not difficult to guess that these will be textual values.
+
+For this purpose, we’ll use the TEXT type. The last column called priority defines the priority of our tasks and should store integers.
+
+Below is the SQL code that we’ll use later in the course to create our table using the sqlite3 module. Note the name and priority columns that contain the NOT NULL constraint. This will avoid creating tasks with fields equal to NULL.
+```SQL
+CREATE TABLE tasks(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    priority INTEGER NOT NULL
+);
+```
+    
