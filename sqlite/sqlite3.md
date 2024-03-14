@@ -92,3 +92,23 @@ The select statement allows us to read data from one or more tables. Its syntax 
 ```python
 SELECT column FROM table_name;
 ```
+Here, we decide to read the values saved in only one column. If we'd like to read only the names of the tasks save in in the ```tasks``` table we could use the following:
+```python
+SELECT name FROM tasks;
+```
+or
+```python
+SELECT column1, column2, column3, ..., columnN FROM table_name;
+```
+This allows us to read values from more columns. If we'd like to read the task names and their priorities, we could use the following query:
+```python
+SELECT name, priority FROM tasks;
+```
+or
+```
+SELECT * table_name;
+```
+If we don't have specific requirements, we can read the values from all.
+
+#### Reading Data: continue
+if we don't want to treat the ```Cursor``` object as an iterator, we can use its method called ```fetchall```. The ```fetchall``` methods fetches all records 
