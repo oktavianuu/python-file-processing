@@ -112,4 +112,7 @@ If we don't have specific requirements, we can read the values from all.
 
 #### Reading Data: continue
 if we don't want to treat the ```Cursor``` object as an iterator, we can use its method called ```fetchall```. The ```fetchall``` methods fetches all records.
-It is important to remember that ```fetchall``` method is less efficient than iterator because it reads all the records into the memory and then returns a list of tuples. For small amount of data, it doesn't matter but if our table contains a huger number of records, this can cause memory issues.   
+It is important to remember that ```fetchall``` method is less efficient than iterator because it reads all the records into the memory and then returns a list of tuples. For small amount of data, it doesn't matter but if our table contains a huger number of records, this can cause memory issues. 
+
+In addition to the iterator and ```fetchall``` method, the ```Cursor``` object provides a very useful method called ```fetchone``` to retrieve the next available record.
+NOTE: The ```fetchone``` method returns ```None``` if there is no data to read.
