@@ -85,3 +85,10 @@ The ```close``` method is used to close the conneection of our database after in
 #### the ```executemany()``` method
 Imagine if we want to add three task to the database, if we use ```execute``` method, we need to do it separately three times. This is where ```executemany``` is useful. This method is provided by the ```Cursor``` object. 
 The ```executemany``` method allows us to insert multiple records at once. As an argument, it accepts an SQL statement and an array containing any number of tuples.
+
+#### Reading Data
+The purpose of reading data is to display what is inside our database to the screen. In order to do that we need SQL statement called ```SELECT```.
+The select statement allows us to read data from one or more tables. Its syntax looks like this:
+```python
+SELECT column FROM table_name;
+```
