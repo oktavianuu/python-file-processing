@@ -52,7 +52,7 @@ CREATE TABLE tasks(
 ```
 
 #### sqlite3 - inserting data
-To insert data to our table, we'll use 'INSERT INTO' statement. Its syntax is as follow:
+To insert data into a table, we'll use `INSERT INTO` statement as follow:
 ```python
 INSERT INTO table_name (column1, column2, column3, ..., columnN)
 VALUES (value1, value2, value3, ..., value4)
