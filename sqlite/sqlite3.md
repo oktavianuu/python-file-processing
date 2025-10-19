@@ -100,7 +100,7 @@ or
 ```python
 SELECT column1, column2, column3, ..., columnN FROM table_name;
 ```
-This allows us to read values from more columns. If we'd like to read the task names and their priorities, we could use the following query:
+This allows us to read values from more than one columns. If we'd like to read the task names and their priorities, we could use the following query:
 ```python
 SELECT name, priority FROM tasks;
 ```
