@@ -116,3 +116,4 @@ It is important to remember that ```fetchall``` method is less efficient than it
 
 In addition to the iterator and ```fetchall``` method, the ```Cursor``` object provides a very useful method called ```fetchone``` to retrieve the next available record.
 NOTE: The ```fetchone``` method returns ```None``` if there is no data to read.
+
