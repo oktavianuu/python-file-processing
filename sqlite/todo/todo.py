@@ -47,6 +47,14 @@ class Todo:
         for task in tasks:
             print(task)
 
+    def change_priority(self):
+        user_id = int(input("Enter the id: "))
+        priority = int(input("Enter priority: "))
+        self.c.execute('UPDATE tasks SET priority = ? WHERE id = ?', (priority, user_id))
+
+    def delete_task(self):
+        pass
+
 # functionality testing
 app = Todo()
 app.add_task()
