@@ -129,3 +129,11 @@ For example in our case, if we want to update priority to 20 for id 1, then we d
 UPDATE task SET priority = 1 WHERE id = 1;
 ```
 **NOTE**: if we forget to set the condition, all priority records in the table will be updated.
+
+#### Deleting Data
+After completing a task, maybe we need to delete the records, here is what we can do to delete record using ```DELETE``` statement:
+```
+DELETE FROM table_name WHERE condition;
+```
+**NOTE**: If we forget to set the condition, all records will be deleted. 
+
