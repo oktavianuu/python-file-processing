@@ -117,3 +117,15 @@ It is important to remember that ```fetchall``` method is less efficient than it
 In addition to the iterator and ```fetchall``` method, the ```Cursor``` object provides a very useful method called ```fetchone``` to retrieve the next available record.
 NOTE: The ```fetchone``` method returns ```None``` if there is no data to read.
 
+#### Updating Data
+Sometimes if not most of the times, we need to modify existing records, lets say we want to change the priority or task's name. We can do that by using SQL statement ```UPDATE``` with the following syntax:
+```
+UPDATE table_name
+SET column1 = value1, column2 = value2, column3 = value3, ..., columnN = valueN
+WHERE condition;****
+```
+For example in our case, if we want to update priority to 20 for id 1, then we do the following:
+```
+UPDATE task SET priority = 1 WHERE id = 1;
+```
+**NOTE**: if we forget to set the condition, all priority records in the table will be updated.
