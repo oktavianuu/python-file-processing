@@ -18,10 +18,10 @@ class Todo:
         name = input('Enter task name: ').strip() # remove leading/trailing whitespace
         if not name:
             print("The task name cannot be an empty string.")
-        return 
+            return 
     
         try:
-            priority = int(input("Enter priority"))
+            priority = int(input("Enter priority: "))
             if priority < 1:
                 print("task priority must be at least 1.")
                 return
@@ -47,6 +47,13 @@ class Todo:
         for task in tasks:
             print(task)
 
+# functionality testing
 app = Todo()
 app.add_task()
-app.find_task()
+app.add_task()
+
+# app.find_task()
+
+app.show_tasks()
+# test finding a specific task
+
