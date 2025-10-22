@@ -57,28 +57,79 @@ class TaskSync:
                     continue # back to the start of the loop
                 break # exit loop when valid
             except ValueError:
-                print("Please enter a valid number.")
-        
-        # Get and validate priority
+                print("Please enter a valid number: ")
+            
+        while True:
             try:
                 priority = int(input("Enter new priority: "))
                 if priority < 1:
-                    print()
-            
-            except:
+                    print("Priority must be at leat 1.")
+                    continue
+                break   
+            except ValueError:
+                print("Priority must be >= 1.")
+        
+        # check if task exist before updating
+        self.c.execute('SELECT * FROM tasks WHERE id = ?', (user_id,))
+        if not self.c.fetchone():
+            print(f"No task found with ID {user_id}.")
+            return
+                
+        # update priority
+        self.c.execute("UPDATE tasks SET priority = ? WHERE id = ?", (priority, user_id))
+        self.conn.commit()
 
-
+        print(f"Priority for task ID {user_id} updated to {priority}.")
 
     def delete_task(self):
-        pass
+        try:
+            task_id = int(input("Enter task ID to be deleted: "))
+            self.c.execute('DELETE FROM tasks WHERE id = ?', (task_id,))
+            self.conn.commit()
 
-# functionality testing
-app = Todo()
-app.add_task()
-app.add_task()
+            if self.c.rowcount > 0:
+                print(f"Task {task_id} deleted successfully!")
+            else:
+                print(f"No task found with ID {task_id}.")
+        
+        except ValueError:
+            print("Please enter a valid number.")
 
-# app.find_task()
+    def show_menu(self):
+        """Display the main menu and handle user choice"""
+        menu_options = {
+            '1': ('Show All Tasks', self.show_tasks),
+            '2': ('Add New Tasks', self.add_task),
+            '3': ('Change Task Priority', self.change_priority),
+            '4': ('Delete Task', self.delete_task),
+            '5': ('Exit', None)
+        }
 
-app.show_tasks()
-# test finding a specific task
+        while True:
+            print("n" + "="*40)
+            print("              Task Sync Application")
+            print("="*40)
 
+            for key, (description, _) in menu_options.items():
+                print(f"{key}. {description}")
+            print("="*40)
+        
+            choice = input("Enter your choice (1-5): ")
+            if choice == '5':
+                print("Goodbye!")
+                break
+            elif choice in menu_options:
+                method = menu_options[choice][1]
+                if method:
+                    try:
+                        method()
+                    except Exception as e:
+                        print("Error {e}")
+            else:
+                print("Invalid choice! Please enter 1-5.")
+
+if __name__ == "__main__":
+    app = TaskSync()
+    app.show_menu()
+    app.conn.close()
+    print("Database connection closed")
