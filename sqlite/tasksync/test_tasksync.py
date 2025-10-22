@@ -66,7 +66,7 @@ class TestTasksync(unittest.TestCase):
         self.assertEqual(tasks[1]['name'], "Task 2")
 
 class TestTaskSyncIntegration(unittest.TestCase):
-    """Inetgration test with actual user input simulation"""
+    """Integration test with actual user input simulation"""
     def setUp(self):
         self.db_fd, self.db_path = tempfile.mkstemp()
 

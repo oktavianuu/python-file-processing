@@ -48,9 +48,26 @@ class TaskSync:
             print(task)
 
     def change_priority(self):
-        user_id = int(input("Enter the id: "))
-        priority = int(input("Enter priority: "))
-        self.c.execute('UPDATE tasks SET priority = ? WHERE id = ?', (priority, user_id))
+        # Get and validate ID
+        while True:
+            try:
+                user_id = int(input("Enter the task ID: "))
+                if user_id < 1:
+                    print("ID must be a positive number")
+                    continue # back to the start of the loop
+                break # exit loop when valid
+            except ValueError:
+                print("Please enter a valid number.")
+        
+        # Get and validate priority
+            try:
+                priority = int(input("Enter new priority: "))
+                if priority < 1:
+                    print()
+            
+            except:
+
+
 
     def delete_task(self):
         pass
