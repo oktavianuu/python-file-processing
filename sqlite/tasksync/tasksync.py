@@ -2,7 +2,8 @@ import sqlite3
 
 class TaskSync:
     def __init__(self):
-        self.conn = sqlite3.connect('todo.db')
+        db_path = ('sqlite/tasksync/tasksync.db')
+        self.conn = sqlite3.connect(db_path)
         self.c = self.conn.cursor()
         self.create_task_table()
     
@@ -96,7 +97,7 @@ class TaskSync:
             print("Please enter a valid number.")
 
     def show_menu(self):
-        """Display the main menu and handle user choice"""
+        """Display main menu and handle user choice"""
         menu_options = {
             '1': ('Show All Tasks', self.show_tasks),
             '2': ('Add New Tasks', self.add_task),
